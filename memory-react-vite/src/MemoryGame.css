@@ -1,0 +1,152 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+.memory-container {
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  position: relative;
+  text-align: center;
+}
+
+.memory-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.memory-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.memory-container h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.countdown {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 20px 0;
+  color: #f9d71c;
+  text-shadow: 0 0 12px #f9d71c;
+}
+
+.restart-btn {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: #f9d71c;
+  color: #222;
+  font-weight: bold;
+  box-shadow: 0 0 8px #f9d71c;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart-btn:hover {
+  background-color: #c5a800;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #c5a800;
+}
+
+.turns {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.victory-message {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #ffe600;
+  text-shadow: 0 0 12px #ffe600;
+  animation: flashWin 1.5s ease-in-out infinite;
+}
+
+@keyframes flashWin {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* -- GRILLE FIXE 6 COLONNES, 2 LIGNES -- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 110px); /* 6 cartes plus larges */
+  grid-template-rows: repeat(2, 140px);   /* 2 lignes plus hautes */
+  gap: 15px;
+  justify-content: center;
+  margin-top: 10px;
+  max-width: 720px;  /* largeur totale = 6*110 + 5*15 = 660 + 75 = 735px approx */
+  width: 100%;
+}
+
+.card {
+  perspective: 1000px;
+  cursor: pointer;
+  width: 110px;   /* correspond à la colonne */
+  height: 140px;  /* correspond à la ligne */
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+  background: white;
+  transform: rotateY(180deg);
+}
+
+.card-front img {
+  max-width: 70%;  /* un peu plus grand que 60% */
+  max-height: 70%;
+}
+
+.card-back {
+  background: #222;
+  color: #f9d71c;
+  font-size: 2.5rem; /* un peu plus gros */
+  transform: rotateY(0deg);
+  user-select: none;
+  box-shadow: inset 0 0 10px #f9d71c;
+}
+

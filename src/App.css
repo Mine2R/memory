@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.timer {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-top: 1rem;
+}
+
+.game-over {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.game-won {
+  color: #27ae60;
+  font-weight: bold;
+  margin-top: 1rem;
+}
